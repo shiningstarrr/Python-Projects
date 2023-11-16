@@ -21,7 +21,7 @@
 # Resources:
 - Resolve Django import: https://www.youtube.com/watch?v=QF0UJeKCM-8
 - Bootstrap: https://getbootstrap.com/
-- 
+- Python Shell Queries: https://docs.djangoproject.com/en/4.2/topics/db/queries/
 
 
 # Create Super User
@@ -108,7 +108,14 @@ def create(request):
 
 
 # Send form data to database
-
+```ruby
+def createData(request):
+    data1 = request.POST['name'],
+    data2 = request.POST['title']
+    newEmployee = Employee(name=data1,title=data2)
+    newEmployee.save()
+    return HttpResponseRedirect(reverse('index')) 
+```
 
 
 

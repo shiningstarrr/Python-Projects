@@ -1,8 +1,8 @@
 <h2>Create Employees</h2>
 
-<form>
+<form action = "createData/", method="post">
     {% csrf_token %}
-    Name:<input>
-    Title:<input>
-    <input type = "submit" value = "create">
+    Name:<input name="name"/>
+    Title:<input name="title"/>
+    <input type = "submit" value = "create"/>
 </form>

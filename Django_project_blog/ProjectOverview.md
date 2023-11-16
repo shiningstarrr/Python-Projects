@@ -20,6 +20,8 @@
 
 # Resources:
 - Resolve Django import: https://www.youtube.com/watch?v=QF0UJeKCM-8
+- Bootstrap: https://getbootstrap.com/
+- 
 
 
 # Create Super User
@@ -51,10 +53,72 @@
 
 
 # Index.html
+- Create index.html under templates folder
+- Add templates in view.py:
+```ruby
+def index(request):
+    template = loader.get_template('index.html')
+    return HttpResponse(template.render())
 
-
+```
 
 
 # Bootstrap
-# Index.html continue
-# models.py(database)
+- Copy Bootstrap template into index.html
+- Create table in models.py
+```ruby
+class Employee(models.Model):
+    name = models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
+```
+- Migrate the database: ```python manage.py makemigrations employee```, then ```python manage.py migrate```
+
+
+# Add data into database/models.py
+- in terminal: ```python manage.py shell```
+- >>> from employee.models import Employee
+  >>> Employee.objects.all()
+  >>> emp = Employee(name='John',title='Manager')
+  >>> emp.save()
+  >>> Employee.objects.all().values()
+
+
+# using model in index.html
+- Pass Employee into index.html:
+```ruby
+def index(request):
+    myEmployees = Employee.objects.all().values()
+    template = loader.get_template('index.html')
+    context = {
+        'myEmployees':myEmployees
+    }
+    return HttpResponse(template.render(context,request))
+```
+- ```{% for x in myEmployees %}, {% endfor %}, {{x.name}}, {{x.title}}```
+
+
+# Simple form page (CREATE)
+- Create createPage.html and pass into urls.py: ```path('create/',views.create,name = 'create')```
+- Add function in views.py:
+```ruby
+def create(request):
+    template = loader.get_template('createPage.html')
+    return HttpResponse(template.render({}, request))
+```
+
+
+# Send form data to database
+
+
+
+
+
+# DELETE, UPDATE, RECAP
+# Django extension in vscode and django tips
+# Cleanup the code
+# Create SUPERUSER
+# Easy to use admin panel
+# ADMIN. py
+# model (database) for blog page
+# Bootstrap for blog page
+# Blog. html

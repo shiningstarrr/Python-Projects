@@ -25,3 +25,7 @@ def createData(request):
     newEmployee = Employee(name=data1,title=data2)
     newEmployee.save()
     return HttpResponseRedirect(reverse('index')) # The reverse() function can reverse a large variety of regular expression patterns for URLs
+
+def fav(request):
+    template=loader.get_template('favPage.html')
+    return HttpResponse(template.render({},request))

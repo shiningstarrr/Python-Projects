@@ -82,7 +82,7 @@ class Employee(models.Model):
     >>> from employee.models import Employee
     >>> emp = Employee(name='John',title='Manager')
     >>> emp.save()
-    >>> Employee.objects.all.values()
+    >>> Employee.objects.all().values()
 
 
 
@@ -119,11 +119,22 @@ def createData(request):
     newEmployee.save()
     return HttpResponseRedirect(reverse('index')) 
 ```
-
-
+## Create link to direct to create page
+```ruby
+    <a href="http://127.0.0.1:8000/employee/create/">
+    Create
+    </a>     
+```
 
 
 # DELETE, UPDATE, RECAP
+
+
+
+
+
+
+
 # Django extension in vscode and django tips
 # Cleanup the code
 # Create SUPERUSER

@@ -1,0 +1,8 @@
+<h2>Update Employees</h2>
+
+<form action = "updateData/{{Employee.id}}", method="post">
+    {% csrf_token %}
+    Name:<input name="name" value = "{{Employee.name}}"/>
+    Title:<input name="title" value = "{{Employee.title}}"/>
+    <input type = "submit" value = "update"/>
+</form>

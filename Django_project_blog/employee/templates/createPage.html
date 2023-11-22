@@ -2,7 +2,7 @@
 
 <form action = "createData/", method="post">
     {% csrf_token %}
-    Name:<input name="name"/>
-    Title:<input name="title"/>
+    Name:<input name="name" value = "default"/>
+    Title:<input name="title" value = "default"/>
     <input type = "submit" value = "create"/>
 </form>

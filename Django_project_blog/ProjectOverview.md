@@ -88,6 +88,7 @@ class Employee(models.Model):
 
 # using model in index.html
 - Pass Employee into index.html:
+[The Context is a class in Django that we instantiate before rendering a template. A context is a mapping of a single variable name to a value.]
 ```ruby
 def index(request):
     myEmployees = Employee.objects.all().values()
@@ -128,10 +129,44 @@ def createData(request):
 
 
 # DELETE, UPDATE, RECAP
-
-
-
-
+## Delete
+- Add delete button in index.html and pass into id:
+```<a href= 'delete/{{x.id}}', type="button" class="btn btn-sm btn-outline-secondary">Delete</a>```
+- Create function delete in views.py:
+```ruby
+def delete(request,id):
+    del_emp = Employee.objects.get(id=id)
+    del_emp.delete()
+    return HttpResponseRedirect(reverse('index'))
+```
+- Add path URL: ```path('delete/<int:id>',views.delete, name='delete'),```
+## Update
+- Add update button in index.html and pass into id
+- Create updatePage.html and pass into id:
+```<form action = "updateData/{{Employee.id}}", method="post">```
+- Create views.py function:
+```ruby
+def update(request,id):
+    update_emp = Employee.objects.get(id = id)
+    template = loader.get_template('updatePage.html')
+    context={
+        'Employee':update_emp
+    }
+    return HttpResponse(template.render(context,request))
+def updateData(request,id):
+    data1 = request.POST['name']
+    data2 = request.POST['title']
+    update_emp = Employee.objects.get(id = id)
+    update_emp.name = data1
+    update_emp.title = data2
+    update_emp.save()
+    return HttpResponseRedirect(reverse('index')) 
+```
+- Add urls:
+```ruby  
+path('update/<int:id>',views.update,name = 'update'),
+path('update/updateData/<int:id>', views.updateData,name='updateData'),
+```
 
 
 

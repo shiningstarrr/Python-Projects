@@ -1,3 +1,5 @@
+import http
+from json import load
 from re import template
 from turtle import title
 from django.shortcuts import render
@@ -25,3 +27,25 @@ def createData(request):
     newEmployee = Employee(name=data1,title=data2)
     newEmployee.save()
     return HttpResponseRedirect(reverse('index')) # The reverse() function can reverse a large variety of regular expression patterns for URLs
+
+def delete(request,id):
+    del_emp = Employee.objects.get(id=id)
+    del_emp.delete()
+    return HttpResponseRedirect(reverse('index'))
+
+def update(request,id):
+    update_emp = Employee.objects.get(id = id)
+    template = loader.get_template('updatePage.html')
+    context={
+        'Employee':update_emp
+    }
+    return HttpResponse(template.render(context,request))
+
+def updateData(request,id):
+    data1 = request.POST['name']
+    data2 = request.POST['title']
+    update_emp = Employee.objects.get(id = id)
+    update_emp.name = data1
+    update_emp.title = data2
+    update_emp.save()
+    return HttpResponseRedirect(reverse('index')) 

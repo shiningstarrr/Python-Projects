@@ -19,12 +19,12 @@
 
 
 # Resources:
-- Resolve Django import: https://www.youtube.com/watch?v=QF0UJeKCM-8
-- Bootstrap: https://getbootstrap.com/
-- Python Shell Queries: https://docs.djangoproject.com/en/4.2/topics/db/queries/
-- Complete Queryset API: https://docs.djangoproject.com/en/4.2/ref/models/querysets/#queryset-api
-- Queryset limiting field reference: https://docs.djangoproject.com/en/4.2/ref/models/querysets/#field-lookups
-- 
+- Resolve Django import: [https://www.youtube.com/watch?v=QF0UJeKCM-8]
+- Bootstrap: [https://getbootstrap.com/]
+- Python Shell Queries: [https://docs.djangoproject.com/en/4.2/topics/db/queries/]
+- Complete Queryset API: [https://docs.djangoproject.com/en/4.2/ref/models/querysets/#queryset-api]
+- Queryset limiting field reference: [https://docs.djangoproject.com/en/4.2/ref/models/querysets/#field-lookups]
+- Django Tags in Html: [https://docs.djangoproject.com/en/4.2/ref/templates/builtins/]
 
 
 # Create Super User

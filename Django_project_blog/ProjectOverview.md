@@ -167,11 +167,31 @@ def updateData(request,id):
 path('update/<int:id>',views.update,name = 'update'),
 path('update/updateData/<int:id>', views.updateData,name='updateData'),
 ```
+## Django tags in html
+- Reverse the Employee Order
+```{% for x in myEmployees reversed %}```
+- count the loop
+```{{forloop.counter}}```, ```{{forloop.counter0}}``` starts from 0
+- ifelse
+```{%if ...%} {%else%} {%endif%}```
+- comment
+```{%comment%} {%endcomment%}```
+- cycle
+```{%cycle 'bg-warning' 'bg-danger' 'bg-primary' 'bg-info' as bg_color%} <h5 class = "card-title {{bg_colo}}">```
 
 
+# Template Inheritance
+- Method 1: Move bootstrap links to head.html, and add ```{% include 'head.html' %}``` to use the link in index.html
+- Method 2: Django can create main page which includes head and footer
+    + create templates folder under main folder and create main.html, head.html, and footer.html underneath it.
+    + move head and footer in index.html to head.html and footer.html
+    + add include tags in main.html
+    + create employee folder (name should be the same as the app name) in employee -> templates -> employee
+    + move createPage.html, index.html, updatePage.html into employee folder
+    + in view.py file: add employee into directory such as  ```template = loader.get_template('employee/index.html')```
+    + in settings.py change DIRS to ```'DIRS': [BASE_DIR / 'templates'],```
 
-# Django extension in vscode and django tips
-# Cleanup the code
+
 # Create SUPERUSER
 # Easy to use admin panel
 # ADMIN. py

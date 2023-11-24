@@ -11,14 +11,14 @@ from .models import Employee
 # Create your views here.
 def index(request):
     myEmployees = Employee.objects.all().values()
-    template = loader.get_template('index.html')
+    template = loader.get_template('employee/index.html')
     context = {
         'myEmployees':myEmployees
     }
     return HttpResponse(template.render(context,request))
 
 def create(request):
-    template = loader.get_template('createPage.html')
+    template = loader.get_template('employee/createPage.html')
     return HttpResponse(template.render({}, request))
 
 def createData(request):
@@ -35,7 +35,7 @@ def delete(request,id):
 
 def update(request,id):
     update_emp = Employee.objects.get(id = id)
-    template = loader.get_template('updatePage.html')
+    template = loader.get_template('employee/updatePage.html')
     context={
         'Employee':update_emp
     }

@@ -1,8 +1,9 @@
+{% include 'head.html'%}
 <h2>Create Employees</h2>
 
 <form action = "createData/", method="post">
     {% csrf_token %}
     Name:<input name="name" value = "default"/>
     Title:<input name="title" value = "default"/>
-    <input type = "submit" value = "create"/>
+    <input type = "submit" value = "create" class = "btn btn-primary" />
 </form>

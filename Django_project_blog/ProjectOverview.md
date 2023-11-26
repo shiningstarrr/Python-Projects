@@ -178,6 +178,14 @@ path('update/updateData/<int:id>', views.updateData,name='updateData'),
 ```{%comment%} {%endcomment%}```
 - cycle
 ```{%cycle 'bg-warning' 'bg-danger' 'bg-primary' 'bg-info' as bg_color%} <h5 class = "card-title {{bg_colo}}">```
+- filter
+```ruby
+    <p class="lead text-muted">
+        {% filter upper %}
+        This is the list of all employees in the Company
+        {% endfilter %}
+    </p>
+```
 
 
 # Template Inheritance
@@ -190,6 +198,14 @@ path('update/updateData/<int:id>', views.updateData,name='updateData'),
     + move createPage.html, index.html, updatePage.html into employee folder
     + in view.py file: add employee into directory such as  ```template = loader.get_template('employee/index.html')```
     + in settings.py change DIRS to ```'DIRS': [BASE_DIR / 'templates'],```
+- create inheritance in index.html:
+```ruby
+#start with:
+{% extends 'main.html' %}
+{% block content %}
+#end with:
+{% endblock %}
+```
 
 
 # Create SUPERUSER

@@ -7,6 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from .models import Employee
+from django.db.models import Q
 
 # Create your views here.
 def index(request):

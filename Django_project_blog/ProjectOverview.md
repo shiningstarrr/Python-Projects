@@ -181,11 +181,16 @@ path('update/updateData/<int:id>', views.updateData,name='updateData'),
 - filter
 ```ruby
     <p class="lead text-muted">
-        {% filter upper %}
+        {% filter upper|linenumbers %}
         This is the list of all employees in the Company
         {% endfilter %}
     </p>
+# USE IN view.py
+myEmployees = Employee.objects.filter(title='Manager') | Employee.objects.filter(title='CEO')
+myEmployees = Employee.objects.filter(title__startswith='M')
 ```
+- from django.db.models import Q
+```myEmployees = Employee.objects.filter(Q(title='Manager') | Q(title='CEO))```
 
 
 # Template Inheritance

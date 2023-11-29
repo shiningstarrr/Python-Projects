@@ -62,3 +62,12 @@ def blog(request):
         'featuredPost':featuredPost,
     }
     return HttpResponse(template.render(context, request))
+
+
+def detailsPage(request,id):
+    detailsPost = BlogPosts.objects.get(id = id)
+    template = loader.get_template('employee/detailsPage.html')
+    context={
+        'posts':detailsPost
+    }
+    return HttpResponse(template.render(context,request))

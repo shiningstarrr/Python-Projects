@@ -287,6 +287,24 @@ urlpatterns = [
     </a>
 ```
 
-# Bootstrap to view details of a blog
-# Views.py for view details of blog
+# Build details of a blog
+- create detailsPage.html and add 
+```ruby
+{% extends 'main.html' %}
+{% block content %}
+{% endblock %}
+```
+- Add functions in view.py:
+```ruby
+def detailsPage(request,id):
+    detailsPost = BlogPosts.objects.get(id = id)
+    template = loader.get_template('employee/detailsPage.html')
+    context={
+        'posts':detailsPost
+    }
+    return HttpResponse(template.render(context,request))
+```
+
+
+
 # Urls of view details

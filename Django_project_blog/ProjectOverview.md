@@ -188,6 +188,7 @@ path('update/updateData/<int:id>', views.updateData,name='updateData'),
 # USE IN view.py
 myEmployees = Employee.objects.filter(title='Manager') | Employee.objects.filter(title='CEO')
 myEmployees = Employee.objects.filter(title__startswith='M')
+myEmployees = Employee.objects.filter(title__contains='M')
 ```
 - from django.db.models import Q
 ```myEmployees = Employee.objects.filter(Q(title='Manager') | Q(title='CEO))```

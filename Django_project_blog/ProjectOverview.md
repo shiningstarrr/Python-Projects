@@ -253,15 +253,40 @@ def blog(request):
     + modify name in url: ```path('employee/',views.index,name = 'employee'),```
     + In navbar.html: ```<li class="nav-item"><a class="nav-link" href="{% url 'employee' %}">Employee</a></li>```
     + Or another way: ```<li class="nav-item"><a class="nav-link" href="{% http://127.0.0.1:8000/employee/ %}">Employee</a></li>```
+- Featured blog post: ```featuredPost = BlogPosts.objects.filter(featured = True)```
 
 
-
-# Correct way of adding links
-# Display blog posts
-# Correcting error in blog design
 # Working with images
-# Image setting in settings.py
+- Install pillow package: ```pip install pillow```
+- Add imagefield in models: ```image = models.ImageField(upload_to='images', null=True, blank=True)```
+- Make migration
+- In settings.py: 
+```ruby
+STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR, 'media'
+```
+
+
 # Add image in blog post
+- In project urls.py:
+```ruby
+from django.conf import Settings
+from django.conf.urls.static import static
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('employee.urls'))
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+```
+- Add image url in blog.html: 
+```ruby
+    <a href="#!">
+        {% if post.image %}
+        <img class="card-img-top" src="{{post.image.url}}" alt="..." />
+        {% endif %}
+    </a>
+```
+
 # Bootstrap to view details of a blog
 # Views.py for view details of blog
 # Urls of view details

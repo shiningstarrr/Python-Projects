@@ -1,12 +1,13 @@
 import http
 from json import load
+from multiprocessing import context
 from re import template
 from turtle import title
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from .models import Employee
+from .models import BlogPosts, Employee
 from django.db.models import Q
 
 # Create your views here.
@@ -53,5 +54,11 @@ def updateData(request,id):
 
 # For blog page:
 def blog(request):
+    posts = BlogPosts.objects.all()
+    featuredPost = BlogPosts.objects.filter(featured = True)
     template = loader.get_template('employee/blog.html')
-    return HttpResponse(template.render({}, request))
+    context = {
+        'posts':posts,
+        'featuredPost':featuredPost,
+    }
+    return HttpResponse(template.render(context, request))

@@ -50,3 +50,8 @@ def updateData(request,id):
     update_emp.title = data2
     update_emp.save()
     return HttpResponseRedirect(reverse('index')) 
+
+# For blog page:
+def blog(request):
+    template = loader.get_template('employee/blog.html')
+    return HttpResponse(template.render({}, request))

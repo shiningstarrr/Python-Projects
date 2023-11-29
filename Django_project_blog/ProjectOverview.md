@@ -237,9 +237,24 @@ class BlogPosts(models.Model):
 - After changing models.py, remember to make migration: ```python manage.py makemigrations```, ```python manage.py migrate```
 
 
-
-
-
-
 # Bootstrap for blog page
+- GO to startbootstrap.com and grab html source code from template -> blog
+- Add path: ```path('blog/',views.blog,name = 'blog'),```
+- Add function in views:
+```ruby
+def blog(request):
+    template = loader.get_template('employee/blog.html')
+    return HttpResponse(template.render({}, request))
+```
+
+
 # Blog. html
+# Correct way of adding links
+# Display blog posts
+# Correcting error in blog design
+# Working with images
+# Image setting in settings.py
+# Add image in blog post
+# Bootstrap to view details of a blog
+# Views.py for view details of blog
+# Urls of view details

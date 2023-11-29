@@ -214,9 +214,32 @@ myEmployees = Employee.objects.filter(title__contains='M')
 ```
 
 
-# Create SUPERUSER
-# Easy to use admin panel
-# ADMIN. py
+# SUPERUSER & Admin Panel
+- Create Superuser: python manage.py createsuperuser
+- In admin.py:
+```ruby
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'title')
+
+admin.site.register(Employee, EmployeeAdmin)
+```
+
+
 # model (database) for blog page
+- Add blog posts table:
+```ruby
+class BlogPosts(models.Model):
+    title = models.CharField(max_length=255, null=False,blank=False)
+    desc = models.TextField(null=False,blank=False)
+    featured = models.BooleanField(default=False)
+    
+```
+- After changing models.py, remember to make migration: ```python manage.py makemigrations```, ```python manage.py migrate```
+
+
+
+
+
+
 # Bootstrap for blog page
 # Blog. html

@@ -9,7 +9,7 @@
               This is the list of all employees in the Company
             </p>
           </div>
-          <a href="http://127.0.0.1:8000/employee/create/">
+          <a href="{% url 'create' %}">
             Create
           </a>
           
@@ -43,10 +43,10 @@
                         Edit
                       </button>
                   
-                    <a href= 'delete/{{x.id}}', type="button" class="btn btn-sm btn-outline-secondary">
+                    <a href="{% url 'delete' id=x.id %}", type="button" class="btn btn-sm btn-outline-secondary">
                       Delete
                     </a>
-                    <a href= 'update/{{x.id}}', type="button" class="btn btn-sm btn-outline-secondary">
+                    <a href="{% url 'update' id=x.id %}", type="button" class="btn btn-sm btn-outline-secondary">
                       Update
                     </a>
 

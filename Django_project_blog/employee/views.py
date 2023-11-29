@@ -27,12 +27,12 @@ def createData(request):
     data2 = request.POST['title']
     newEmployee = Employee(name=data1,title=data2)
     newEmployee.save()
-    return HttpResponseRedirect(reverse('index')) # The reverse() function can reverse a large variety of regular expression patterns for URLs
+    return HttpResponseRedirect(reverse('employee')) # The reverse() function can reverse a large variety of regular expression patterns for URLs
 
 def delete(request,id):
     del_emp = Employee.objects.get(id=id)
     del_emp.delete()
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('employee'))
 
 def update(request,id):
     update_emp = Employee.objects.get(id = id)
@@ -49,7 +49,7 @@ def updateData(request,id):
     update_emp.name = data1
     update_emp.title = data2
     update_emp.save()
-    return HttpResponseRedirect(reverse('index')) 
+    return HttpResponseRedirect(reverse('employee')) 
 
 # For blog page:
 def blog(request):

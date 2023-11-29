@@ -249,6 +249,13 @@ def blog(request):
 
 
 # Blog. html
+- Attach link to navbar:
+    + modify name in url: ```path('employee/',views.index,name = 'employee'),```
+    + In navbar.html: ```<li class="nav-item"><a class="nav-link" href="{% url 'employee' %}">Employee</a></li>```
+    + Or another way: ```<li class="nav-item"><a class="nav-link" href="{% http://127.0.0.1:8000/employee/ %}">Employee</a></li>```
+
+
+
 # Correct way of adding links
 # Display blog posts
 # Correcting error in blog design

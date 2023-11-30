@@ -306,5 +306,12 @@ def detailsPage(request,id):
 ```
 
 
-
 # Urls of view details
+- Add urls in blog: ```{% url 'details' id=post.id %}```
+- Add images in details:
+```ruby
+    {% if post.image %}
+    <figure class="mb-4"><img class="img-fluid rounded" src="{{posts.image.url}}" alt="..." /></figure>
+    {% endif %}
+```
+- 

@@ -47,7 +47,7 @@
                                     <div class="small text-muted">January 1, 2023</div>
                                     <h2 class="card-title h4">{{post.title}}</h2>
                                     <p class="card-text">{{post.desc}}</p>
-                                    <a class="btn btn-primary" href="#!">Read more →</a>
+                                    <a class="btn btn-primary" href="{% url 'details' id=post.id %}">Read more →</a>
                                 </div>
                             </div>
                             </div>

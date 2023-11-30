@@ -11,5 +11,6 @@ urlpatterns = [
     path('delete/<int:id>',views.delete, name='delete'),
     path('update/<int:id>',views.update,name = 'update'),
     path('update/updateData/<int:id>', views.updateData,name='updateData'),
+    path('details/<int:id>', views.detailsPage, name = 'details'),
 
 ]

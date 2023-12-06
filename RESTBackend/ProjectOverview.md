@@ -4,3 +4,5 @@
 - Add git ignore: .gitignore file
 - Install Django: ```python -m pip install Django```
 - Update pip: ```python.exe -m pip install --upgrade pip```
+- Create project: ```django-admin startproject drf .```
+- Start app: ```django-admin startapp rest_api```

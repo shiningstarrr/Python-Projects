@@ -26,3 +26,48 @@
 
 # Register the model
 - ```admin.site.register(Post)```
+
+# Import Serializers
+- In app folder (rest_api) create serializers.py file
+- Create class PostSerializer
+```ruby
+class PostSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=150)
+    author = serializers.CharField(max_length=100)
+    email = serializers.EmailField(default = '')
+    def create(self, validate_data):
+        return Post.objects.create(validate_data)
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', validated_data.title)
+        instance.author = validated_data.get('author', validated_data.author)
+        instance.email = validated_data.get('email', validated_data.email)
+```
+- In termail: 
+>>> python manage.py shell
+>>> from rest_api.models import Post
+>>> from rest_api.serializers import PostSerializer
+>>> from rest_framework.renderers import JSONRenderer
+>>> from rest_framework.parsers import JSONParser
+>>> post = Post(title = 'test title 1', author = 'star', email='email@example.com')
+>>> post.save()
+>>> serializer = PostSerializer(post)
+>>> serializer.data
+>>> content = JSONRenderer().render(serializer.data)
+>>> content
+>>> serializer = PostSerializer(Post.objects.all(), many = True)
+
+# Model Serializer
+- Recreate class PostSerializer, delete the previous one
+```ruby
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        field = ['title', 'email', 'author']
+```
+- In terminal:
+>>> serializer = PostSerializer()
+>>> print(repr(serializer))
+
+# Create a Normal Django Function Based Api View
+- Import PostSerializer and Post into view.py
+- Create Posts function with request method of 'GET' and 'POST'

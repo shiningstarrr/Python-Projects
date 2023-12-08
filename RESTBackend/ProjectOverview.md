@@ -73,3 +73,11 @@ class PostSerializer(serializers.ModelSerializer):
 - Create Posts function with request method of 'GET' and 'POST'
 - Create urls.py in app folder and add urlpatterns ```urlpatterns = [path('posts/', PostsView)]```
 - Add path in project urls: ```path('', include('rest_api.urls')),```
+
+# Http Methods:
+- add ```@csrf_exempt```to views.py to get authenticated
+- Create function posts_detail()
+
+# Api View Decorator
+- change ```@csrf_exempt``` to ```@api_view(['GET', 'POST'])```
+- Reshape function PostViews and posts_detail

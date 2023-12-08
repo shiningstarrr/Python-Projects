@@ -6,10 +6,10 @@ from rest_framework.parsers import JSONParser
 
 # Create your views here.
 
-def Posts(request):
+def PostsView(request):
     if request.method == 'GET':
         posts = Post.objects.all() # querySet
-        serializer = PostSerializer(Post, many=True) # many for fetching all data
+        serializer = PostSerializer(posts, many=True) # many for fetching all data
         return JsonResponse(serializer.data, safe = False)
     
     elif request.method == 'POST':

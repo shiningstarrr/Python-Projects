@@ -71,3 +71,5 @@ class PostSerializer(serializers.ModelSerializer):
 # Create a Normal Django Function Based Api View
 - Import PostSerializer and Post into view.py
 - Create Posts function with request method of 'GET' and 'POST'
+- Create urls.py in app folder and add urlpatterns ```urlpatterns = [path('posts/', PostsView)]```
+- Add path in project urls: ```path('', include('rest_api.urls')),```

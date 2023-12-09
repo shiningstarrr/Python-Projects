@@ -233,7 +233,7 @@ def verify(plain_password,hashed_password):
 ```
 ## Python - jose
 - Create ayth.py file and finish password verify system.
-- Install OAuth2: ```pip install python-jose[cryptography]```
+- Cnstall OAuth2: ```pip install python-jose[cryptography]```
 - Add ```create_access_token()``` function in OAuth2
 ```ruby
 SECRET_KEY,ALGORITHM,ACCESS_TOKEN_EXPIRE_TIME_MINUTES  = "Hello","HS256",30

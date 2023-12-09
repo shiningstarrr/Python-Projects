@@ -86,7 +86,7 @@ class PostSerializer(serializers.ModelSerializer):
 # Class-Based Api View
 - We can write API views using class-based views, rather than function based views
 - Create function PostsAPIView(APIView) and postDetailsAPIView(APIView) in views.py
-- Change url path in urls.py
+- change url path in urls.py
 ```ruby
     path('posts/', PostsAPIView.as_view()),
     path('details/<int:id>', postDetailsAPIView.as_view()),
@@ -94,30 +94,4 @@ class PostSerializer(serializers.ModelSerializer):
 
 # Using mixins and generic class-based views
 - Create function genericApiView with mixins methods in parameter
-- Change url path: ```path('posts/<int:id>', genericApiView.as_view()),```
-
-# Authentication System
-- Import Authentication:
-```from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication```
-- Add to class genericApiView: 
-```ruby
-    authentication_classes = [SessionAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-```
-- In settings add: ```    'rest_framework.authtoken',``` to INSTALLED_AP_PS
-- Make migrations: ```python manage.py migrate```
-- In 127.0.0.1:8000/admin page: In Tokens -> add token -> select admin user -> save, then copy the code
-- In views.py replace authentication_classes to ```authentication_classes = [TokenAuthentication]```
-- In Postman under Authorization, choose Inherit Auth from parent
-- In Postman under Headers: Add Authorization -> token 87eca808135af3db78132016bd149976504bc758 (paste from admin page)
-
-# Viewsets and Routers
-- Creat postViewSet(viewsets.ViewSet) class in view.py
-- Add routers to urls.py:```path('', include(router.urls)),```
-```ruby
-from rest_framework import routers
-router = routers.SimpleRouter()
-router.register('posts', PostViewSet, basename='posts')
-```
-- Replace postViewSet to generic one which is more efficient: function genericViewSet
-- Change routers
+- 1.57

@@ -1,4 +1,5 @@
 # Django Rest Framework Project - Introduction
+- Video Link: https://www.youtube.com/watch?v=z6WudaByH1k&t=5130s
 - REST stands for Representational State Transfer Application Programming Interface
 - Create Virtual Env: ```py -3 -m venv .venv```
 - Add git ignore: .gitignore file
@@ -81,3 +82,16 @@ class PostSerializer(serializers.ModelSerializer):
 # Api View Decorator
 - change ```@csrf_exempt``` to ```@api_view(['GET', 'POST'])```
 - Reshape function PostViews and posts_detail
+
+# Class-Based Api View
+- We can write API views using class-based views, rather than function based views
+- Create function PostsAPIView(APIView) and postDetailsAPIView(APIView) in views.py
+- change url path in urls.py
+```ruby
+    path('posts/', PostsAPIView.as_view()),
+    path('details/<int:id>', postDetailsAPIView.as_view()),
+```
+
+# Using mixins and generic class-based views
+- Create function genericApiView with mixins methods in parameter
+- 1.57

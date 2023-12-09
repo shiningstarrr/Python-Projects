@@ -5,16 +5,43 @@ from .serializers import PostSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-
-# Generic Classed-based views
 from rest_framework.views import APIView
 from django.http import Http404
 from rest_framework import generics, mixins
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets
 
+
+# Generic ViewSetss
+class genericViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin,mixins.DestroyModelMixin,mixins.RetrieveModelMixin, mixins.UpdateModelMixin):
+    serializer_class = PostSerializer
+    queryset = Post.objects.all()
+
+
+# Viewsets
+class PostViewSet(viewsets.ViewSet):
+    def list(self, request):
+        posts = Post.objects.all() 
+        serializer = PostSerializer(posts, many=True) 
+        return Response(serializer.data)
+    def create(self, request):
+        serializer = PostSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED) 
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
+
+# Generic Classed-based views
 class genericApiView(generics.GenericAPIView,mixins.ListModelMixin,mixins.CreateModelMixin, mixins.UpdateModelMixin,mixins.RetrieveModelMixin,mixins.DestroyModelMixin):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'id'
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request,id):
         if id:

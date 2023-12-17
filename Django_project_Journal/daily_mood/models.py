@@ -10,6 +10,9 @@ class Emp(models.Model):
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
-class items(models.Model):
+class Current(models.Model):
     name = models.CharField(max_length = 255)
-    
+    price = models.IntegerField()
+    photo = models.ImageField(upload_to='images')
+
+

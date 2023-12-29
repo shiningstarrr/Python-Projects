@@ -16,14 +16,14 @@ User <-> Django <-> URL <-> Views <-> Model <-> Database
 
 
 # Django static files
-- Django static files include css, image or javascript, we can create a folder named static to store those static files. 
-- In settings.py: 
+- Django static files include css, image or javascript, we can create a folder named static to store those static files. From https://docs.djangoproject.com/en/4.0/howto/static-files/
+- Typical development congig:
 ```ruby
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
-STATICFILES_DIRS = [
-    'mysite/static'
-]
+# settings.py
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static',]
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 ```
 - Then inside html file add on the top ```{% load static %}```
 - For css style: ```<link rel="stylesheet" href = "{% static 'css/css_name' %}">```
@@ -31,15 +31,15 @@ STATICFILES_DIRS = [
 
 
 # Django media files
+- media files are user-generated content like uploaded images or videos. From https://testdriven.io/blog/django-static-files/
 - In root folder create a folder named media
-- In settings.py: 
+- Typical development congig: 
 ```ruby
-# Media files configuration
+# settings.py
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-```
-- In urls.py:
-```ruby
+MEDIA_ROOT = BASE_DIR / 'uploads'
+
+# urls.py
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
@@ -47,9 +47,25 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 ```
 
-# Bring data to frontend
-- Example in views.py:
+# Model file
+- Create model class: ```class Weapons(models.Model):```
+- Model Field
+    + models.CharField(max_length=)
+    + models.ImageField(upload_to='')
+    + models.EmailField(max_length= , unique=True)
+    + models.DateTimeField(auto_now_add=True)
+    + models.DateTimeField(auto_now=True)
+- Register models in admin
 ```ruby
+# admin.py
+from .models import Employee
+admin.site.register(Employee)
+```
+
+# Bring data to frontend
+- Create function for rendering page from templates/home.html Example
+```ruby
+# views.py
 def home(request):
     employees = Employee.objects.all()
     context = {
@@ -57,8 +73,9 @@ def home(request):
     }
     return render(request,'home.html',context)
 ```
-- Example in home.html:
+- Import data into html page Example
 ```ruby
+# home.html
 {% for e in employees %}
 {{e.id}} # Django will automatically generate primary key. Object's id will not change after deleting
 {{forloop.counter}} # primary key that will change after deleting one object
@@ -68,14 +85,15 @@ def home(request):
 
 # Create urls for app
 - views.py should either render http response or a html web page
-- In project urls.py ```path('employees/', include('employees.urls', name = "..."))```
-- Create urls.py in app folder
+- urls created for project and app
 ```ruby
+# project: 
+path('', include('employees.urls')),
+# app:
 from django.urls import path
 from . import views
-urlpatterns = [
-    path('<int:pk>', views.employee_detail,name = ""),
-]
+path('home/', views.home, name='home'),
+path('<int:pk>', views.employee_detail,name = ""),
 ```
 
 # Link url to button or text

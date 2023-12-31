@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Weapons
+from .models import Tasks
 # Create your views here.
 
 def home(request):
-    weapons = Weapons.objects.all()
+    return render(request, 'home.html')
+def detail(request):
+    tasks = Tasks.objects.all()
     context={
-        'weapons':weapons,
+        'tasks':tasks,
     }
-    return render(request, 'home.html',context)
+    return render(request, 'detail.html', context)

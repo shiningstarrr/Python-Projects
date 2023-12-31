@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Weapons
+from .models import Tasks
 
 # Register your models here.
-admin.site.register(Weapons)
+admin.site.register(Tasks)

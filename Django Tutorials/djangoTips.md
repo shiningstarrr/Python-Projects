@@ -79,7 +79,7 @@ def home(request):
 {% for e in employees %}
 {{e.id}} # Django will automatically generate primary key. Object's id will not change after deleting
 {{forloop.counter}} # primary key that will change after deleting one object
-<img class = "card-img-top" src = "{{e.photo}}" alt = "Employee Photo"> # add images
+<img class = "card-img-top" src = "{{e.photo.url}}" alt = "Employee Photo"> # add images
 {% endfor %}
 ```
 

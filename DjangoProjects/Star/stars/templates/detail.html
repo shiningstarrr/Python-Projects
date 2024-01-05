@@ -37,7 +37,7 @@
                         <span style="position: relative; float: right;">
                             <a href="{% url 'markDone' t.id %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
                             <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                            <a class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                            <a href = "{% url 'editTask' t.id %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                         </span>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 {% for f in finished %}
                 <div class="card m-1">
                     <span style="position: relative; float: right;">
-                        <a href = "{% url 'remove' f.id %}" class="btn btn-danger"><i class="fa fa-trash"></i> Remove from list</a>
+                        <a href = "{% url 'remove' f.id %}" class="btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                         {{f.id}} - {{f.task}}
 
                     </span>

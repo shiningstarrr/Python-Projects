@@ -38,3 +38,6 @@ def remove(request, id):
     task.is_completed = False
     task.save()
     return redirect('detail')
+
+def edit_task(request, id):
+    return render(request, 'editTask.html')

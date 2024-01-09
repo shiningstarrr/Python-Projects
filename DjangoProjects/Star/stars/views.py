@@ -39,5 +39,21 @@ def remove(request, id):
     task.save()
     return redirect('detail')
 
+def deleteTask(request, id):
+    task = get_object_or_404(Todo,id=id)
+    task.delete()
+    return redirect('detail')
+
 def edit_task(request, id):
-    return render(request, 'editTask.html')
+    get_task=get_object_or_404(Todo,id=id)
+    if request.method == 'POST': # update button will send post request to server
+        new_task = request.POST['task']
+        get_task.task = new_task
+        get_task.save()
+        return redirect('detail')
+    else:
+        context={
+            'get_task':get_task,
+        }
+    
+    return render(request,'editTask.html', context)

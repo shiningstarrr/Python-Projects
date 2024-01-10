@@ -1,4 +1,7 @@
-h1{
-    color:rgb(232, 125, 49);
-    background-color:antiquewhite;
+h3{
+    color:chocolate;
+    text-shadow: 3px 3px 2px black, -1px -1px 5px white;
+}
+#complete_1{
+    background-color: rgb(234, 230, 230);
 }

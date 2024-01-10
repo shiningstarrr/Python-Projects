@@ -6,3 +6,6 @@ from .models import Task
 # Create your views here.
 def home(request):
     return render(request, 'test.html')
+
+def todoApp(request):
+    return render(request, 'todoAppMain.html')

@@ -9,7 +9,3 @@ class Task(models.Model):
 
     def __str__(self):
         return self.task
-
-class Uploads(models.Model):
-    image = models.ImageField(upload_to='images', null=True, blank=True)
-    name = models.CharField(max_length = 255)

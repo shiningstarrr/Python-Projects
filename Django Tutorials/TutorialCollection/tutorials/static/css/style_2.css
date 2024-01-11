@@ -1,0 +1,38 @@
+/* For Home.html */
+#header_here{
+    background-color:white;
+}
+#navbar_here{
+    color:rgb(45, 20, 20);
+}
+#title_here{
+    color:rgb(65, 64, 64);
+    background-color:rgb(183, 201, 218);
+    text-align: center;
+}
+#title_here:hover{
+    color:white;
+}
+.work_gallery{
+    display: inline-block;
+    /* justify-content: center;
+    align-items: center; */
+    height: 200px;
+    width:200px;
+    margin-left:70px;
+    border: 3px solid rgb(84, 70, 121);
+    text-align: center;
+    background-color: rgb(247, 225, 255);
+}
+.app_name{
+    color:rgb(79, 25, 81);
+    text-align: center;
+    transform: translateY(75px);
+    text-decoration: none;
+}
+#appName{
+    color:rgb(79, 25, 81);
+    text-align: center;
+    transform: translateY(65px);
+    text-decoration: none;
+}

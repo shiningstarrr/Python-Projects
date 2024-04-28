@@ -11,7 +11,8 @@
 # Setting up:
 - Create a virtual environment: ```py -3 -m venv apivenv```
 - Switch python interpreter to venv version 
-- Switch terminal to venv (use cmd rather than powershell): ```apivenv\Scripts\activate.bat```
+- Switch terminal to venv (use cmd rather than powershell): ```apivenv\Scripts\activate.bat```, ```deactivate.bat```
+- Powershell use: ```apivenv\Scripts\activate.ps1```, ```deactivate```
 
 
 # Resources:
